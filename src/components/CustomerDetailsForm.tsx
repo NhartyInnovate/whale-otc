@@ -120,13 +120,19 @@ export default function CustomerDetailsForm({ type, asset, quote, inputCurrency,
     }
   };
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText('6542851303');
+  const handleCopyText = (text: string) => {
+    navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
   if (success) {
+    const whaleWalletAddress = asset === 'USDT' 
+      ? 'YOUR_USDT_TRC20_WALLET_ADDRESS' 
+      : 'YOUR_SOLANA_WALLET_ADDRESS';
+      
+    const whaleNetwork = asset === 'USDT' ? 'TRC20' : 'Solana';
+
     return (
       <div className="p-6 md:p-10 text-center space-y-6">
         <div className="flex justify-center">
@@ -165,7 +171,7 @@ export default function CustomerDetailsForm({ type, asset, quote, inputCurrency,
                   <div className="flex items-center gap-2 mt-1">
                     <div className="font-bold text-xl tracking-wider text-black">6542851303</div>
                     <button 
-                      onClick={handleCopy}
+                      onClick={() => handleCopyText('6542851303')}
                       className="p-1.5 hover:bg-gray-100 rounded-md transition-colors text-gray-500 hover:text-black flex items-center gap-1 ml-2"
                       title="Copy Account Number"
                     >
@@ -179,11 +185,38 @@ export default function CustomerDetailsForm({ type, asset, quote, inputCurrency,
                 Once you make the transfer, our operators will verify it and release the {asset} to your wallet.
               </p>
             </div>
-          ) : (
-            <p className="text-gray-600 text-base leading-relaxed">
-              We&apos;ve received your request. We&apos;ll review it and process your payout shortly.
-            </p>
-          )}
+          ) : quote ? (
+            <div className="bg-gray-50 border border-gray-100 rounded-xl p-5 mb-6 text-left relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-black"></div>
+              <p className="text-gray-900 font-medium text-sm mb-4">
+                Please transfer exactly <span className="font-bold text-lg">{(inputCurrency === 'crypto' ? quote.inputAmount : quote.cryptoAmount).toLocaleString()} {asset}</span> to the following wallet address:
+              </p>
+              
+              <div className="space-y-3 bg-white p-4 rounded-lg border border-gray-100">
+                <div>
+                  <div className="text-xs text-gray-500 uppercase font-semibold tracking-wider">Network</div>
+                  <div className="font-medium text-gray-900">{whaleNetwork}</div>
+                </div>
+                <div>
+                  <div className="text-xs text-gray-500 uppercase font-semibold tracking-wider">Wallet Address ({asset})</div>
+                  <div className="flex items-center gap-2 mt-1">
+                    <div className="font-bold text-sm tracking-wider text-black break-all">{whaleWalletAddress}</div>
+                    <button 
+                      onClick={() => handleCopyText(whaleWalletAddress)}
+                      className="p-1.5 hover:bg-gray-100 rounded-md transition-colors text-gray-500 hover:text-black flex items-center shrink-0"
+                      title="Copy Address"
+                    >
+                      {copied ? <Check className="w-4 h-4 text-green-600" /> : <Copy className="w-4 h-4" />}
+                      <span className="text-xs font-semibold ml-1">{copied ? 'Copied' : 'Copy'}</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-500 text-xs mt-4 text-center">
+                Once you make the transfer, our operators will verify it and transfer the NGN to your bank account.
+              </p>
+            </div>
+          ) : null}
         </div>
         
         <div className="pt-2">
