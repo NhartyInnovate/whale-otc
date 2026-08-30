@@ -7,6 +7,7 @@ import CustomerOrderCompleted from '../../emails/CustomerOrderCompleted';
 const resendApiKey = process.env.RESEND_API_KEY;
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
 const operatorEmail = process.env.WHALE_OPERATOR_EMAIL || 'admin@whale.com'; // Fallback if not configured for development
+const fromEmail = process.env.RESEND_FROM_EMAIL || 'Whale OTC <onboarding@resend.dev>';
 
 export async function sendOperatorEmail(order: OrderPayload): Promise<NotificationResult> {
   if (!resend) {
@@ -16,9 +17,9 @@ export async function sendOperatorEmail(order: OrderPayload): Promise<Notificati
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Whale OTC <onboarding@resend.dev>',
+      from: fromEmail,
       to: operatorEmail,
-      subject: `New Whale Order – ${order.order_reference}`,
+      subject: `New Whale Order - ${order.order_reference}`,
       react: OperatorNewOrder({ order }),
     });
 
@@ -47,9 +48,9 @@ export async function sendCustomerEmail(order: OrderPayload): Promise<Notificati
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Whale OTC <onboarding@resend.dev>',
+      from: fromEmail,
       to: order.customer_email,
-      subject: `Whale Order Received – ${order.order_reference}`,
+      subject: `Whale Order Received - ${order.order_reference}`,
       react: CustomerOrderConfirmation({ order }),
     });
 
@@ -78,7 +79,7 @@ export async function sendCustomerCompletedEmail(order: OrderPayload): Promise<N
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Whale OTC <onboarding@resend.dev>',
+      from: fromEmail,
       to: order.customer_email,
       subject: `Whale Order Completed – ${order.order_reference}`,
       react: CustomerOrderCompleted({ order }),
