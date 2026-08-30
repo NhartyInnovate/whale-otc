@@ -128,8 +128,8 @@ export default function CustomerDetailsForm({ type, asset, quote, inputCurrency,
 
   if (success) {
     const whaleWalletAddress = asset === 'USDT' 
-      ? 'YOUR_USDT_TRC20_WALLET_ADDRESS' 
-      : 'YOUR_SOLANA_WALLET_ADDRESS';
+      ? 'TRrbZeeLptgVVynErvPsbmjw7ftmcsi4sh' 
+      : 'FTUrLFvfPkg8MAd1fuzKgcXkd865BKFfT3CqxFbqSvqx';
       
     const whaleNetwork = asset === 'USDT' ? 'TRC20' : 'Solana';
 
