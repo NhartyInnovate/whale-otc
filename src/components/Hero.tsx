@@ -40,16 +40,15 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[#fbfcfd]" />
       <div className="absolute top-[-10%] left-[-10%] w-[120%] h-[120%] bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-blue-50/50 via-white to-white pointer-events-none" />
       
-      {/* Decorative Whale background (Desktop) */}
-      <div className="hidden lg:block absolute left-[-5%] bottom-[-5%] w-[65%] max-w-[900px] aspect-[4/3] pointer-events-none z-0">
+      {/* Decorative Whale background */}
+      <div className="absolute left-[-15%] lg:left-[-5%] top-[5%] lg:top-auto lg:bottom-[-5%] w-[120%] lg:w-[65%] max-w-[900px] aspect-[4/3] pointer-events-none z-0 opacity-15 lg:opacity-85">
         <div 
-          className="w-full h-full bg-[url('https://images.unsplash.com/photo-1568430462989-44163eb1752f?q=80&w=2946&auto=format&fit=crop')] bg-no-repeat bg-contain bg-left-bottom animate-whale"
+          className="w-full h-full bg-[url('https://images.unsplash.com/photo-1568430462989-44163eb1752f?q=80&w=2946&auto=format&fit=crop')] bg-no-repeat bg-contain bg-center lg:bg-left-bottom animate-whale"
           style={{
             maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%), linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)',
             WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 90%), linear-gradient(to top, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 90%)',
             WebkitMaskComposite: 'source-in',
             maskComposite: 'intersect',
-            opacity: 0.85,
             mixBlendMode: 'multiply'
           }}
         />
@@ -108,19 +107,6 @@ export default function Hero() {
 
         <div className="w-full max-w-lg relative z-20 animate-slide-up-delay-1" id="trade">
           <TradeWidget />
-        </div>
-
-        {/* Decorative Whale background (Mobile) - Positioned below the form */}
-        <div className="block lg:hidden w-full aspect-[4/3] pointer-events-none mt-8">
-          <div 
-            className="w-full h-full bg-[url('https://images.unsplash.com/photo-1568430462989-44163eb1752f?q=80&w=2946&auto=format&fit=crop')] bg-no-repeat bg-contain bg-center animate-whale"
-            style={{
-              maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)',
-              WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)',
-              opacity: 0.85,
-              mixBlendMode: 'multiply'
-            }}
-          />
         </div>
 
       </div>
