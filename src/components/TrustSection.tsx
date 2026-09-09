@@ -1,24 +1,24 @@
 import React from 'react';
-import { Shield, Clock, Users, BadgeCheck } from 'lucide-react';
+import { Zap, Eye, Fingerprint, MessageCircle } from 'lucide-react';
 
 const trustPoints = [
   {
-    icon: <Shield className="h-6 w-6 text-blue-600" />,
+    icon: <Zap className="h-6 w-6 text-blue-600" />,
     title: 'Simple OTC Process',
     desc: 'Bypass complex exchange interfaces. Deal directly with WHALE.'
   },
   {
-    icon: <BadgeCheck className="h-6 w-6 text-blue-600" />,
+    icon: <Eye className="h-6 w-6 text-blue-600" />,
     title: 'Transparent Quotes',
     desc: 'Clear, competitive pricing with no hidden spread markups at execution.'
   },
   {
-    icon: <Clock className="h-6 w-6 text-blue-600" />,
+    icon: <Fingerprint className="h-6 w-6 text-blue-600" />,
     title: 'Manual Verification',
     desc: 'Every transaction is manually verified by our team for your security.'
   },
   {
-    icon: <Users className="h-6 w-6 text-blue-600" />,
+    icon: <MessageCircle className="h-6 w-6 text-blue-600" />,
     title: 'Direct Support',
     desc: 'Speak directly to a human operator via WhatsApp throughout your trade.'
   }

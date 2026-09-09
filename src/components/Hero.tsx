@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import TradeWidget from './TradeWidget';
-import { Shield, CheckCircle, Headphones } from 'lucide-react';
+import { Diamond, Fingerprint, Handshake } from 'lucide-react';
 
 export default function Hero() {
   const [text1, setText1] = useState("");
@@ -82,21 +82,21 @@ export default function Hero() {
 
           <div className="pt-8 border-t border-gray-200/60 hidden sm:flex justify-center lg:justify-start gap-8 animate-slide-up-delay-2">
             <div className="flex items-center space-x-3">
-              <div className="bg-white p-2 rounded-lg border border-gray-100 shadow-sm"><Shield className="w-5 h-5 text-black"/></div>
+              <div className="bg-white p-2 rounded-lg border border-gray-100 shadow-sm"><Diamond className="w-5 h-5 text-black"/></div>
               <div className="text-left">
                 <p className="text-sm font-bold text-gray-900">Transparent Rates</p>
                 <p className="text-xs text-gray-500">No hidden fees</p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <div className="bg-white p-2 rounded-lg border border-gray-100 shadow-sm"><CheckCircle className="w-5 h-5 text-black"/></div>
+              <div className="bg-white p-2 rounded-lg border border-gray-100 shadow-sm"><Fingerprint className="w-5 h-5 text-black"/></div>
               <div className="text-left">
                 <p className="text-sm font-bold text-gray-900">Manual Verification</p>
                 <p className="text-xs text-gray-500">We verify every trade</p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <div className="bg-white p-2 rounded-lg border border-gray-100 shadow-sm"><Headphones className="w-5 h-5 text-black"/></div>
+              <div className="bg-white p-2 rounded-lg border border-gray-100 shadow-sm"><Handshake className="w-5 h-5 text-black"/></div>
               <div className="text-left">
                 <p className="text-sm font-bold text-gray-900">Direct Support</p>
                 <p className="text-xs text-gray-500">Real human support</p>
